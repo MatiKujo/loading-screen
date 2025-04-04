@@ -1,13 +1,3 @@
-// Aktualizacja głośności
-const rangeSlide = (value) => {
-  const volume = value / 100; // Konwersja zakresu 0-100 na 0-1
-  audio.volume = volume;
-  document.querySelector('.rangeValue').innerText = value + "%";
-};
-
-
-
-
 const songs = [
   { id: 1, url: "songs/nuta1.mp3" },
   { id: 2, url: "songs/nuta2.mp3" }
@@ -15,7 +5,18 @@ const songs = [
 
 let currentSongIndex = 0;
 let isPlaying = false;
+let currentVolume = 100;
 const audio = new Audio(songs[currentSongIndex].url);
+audio.volume = currentVolume / 100;
+
+// Aktualizacja głośności i paska
+const rangeSlide = (value) => {
+  const volume = value / 100;
+  audio.volume = volume;
+  currentVolume = parseInt(value);
+  document.querySelector('.rangeValue').innerText = value + "%";
+  document.querySelector('.range').value = value;
+};
 
 // Załaduj nowy utwór
 const loadSong = (index) => {
@@ -54,37 +55,41 @@ const updatePlayPauseIcon = () => {
   icon.className = isPlaying ? "ri-pause-line" : "ri-play-line";
 };
 
-// Obsługa klawisza spacji do odtwarzania/pauzy
+// Obsługa klawiszy
 document.addEventListener('keydown', (event) => {
   if (event.code === 'Space') {
     event.preventDefault();
     toggleSongPause();
   }
-});
-document.addEventListener('keydown', (event) => {
+
   if (event.code === 'ArrowRight') {
     event.preventDefault();
     nextSong();
   }
-});
-document.addEventListener('keydown', (event) => {
+
   if (event.code === 'ArrowLeft') {
     event.preventDefault();
     prevSong();
   }
-});
-document.addEventListener('keydown', (event) => {
+
   if (event.code === 'ArrowDown') {
-    volume--;
+    event.preventDefault();
+    if (currentVolume > 0) {
+      currentVolume -= 1;
+      if (currentVolume < 0) currentVolume = 0;
+      rangeSlide(currentVolume);
+    }
   }
-});
-document.addEventListener('keydown', (event) => {
+
   if (event.code === 'ArrowUp') {
-    volume++;
+    event.preventDefault();
+    if (currentVolume < 100) {
+      currentVolume += 1;
+      if (currentVolume > 100) currentVolume = 100;
+      rangeSlide(currentVolume);
+    }
   }
 });
 
-// Automatyczne przejście do następnej piosenki po zakończeniu
+// Automatyczne przejście do następnej piosenki
 audio.addEventListener('ended', nextSong);
-
-
