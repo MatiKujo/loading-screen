@@ -1,3 +1,13 @@
+// Aktualizacja głośności
+const rangeSlide = (value) => {
+  const volume = value / 100; // Konwersja zakresu 0-100 na 0-1
+  audio.volume = volume;
+  document.querySelector('.rangeValue').innerText = value + "%";
+};
+
+
+
+
 const songs = [
   { id: 1, url: "songs/nuta1.mp3" },
   { id: 2, url: "songs/nuta2.mp3" }
@@ -63,13 +73,18 @@ document.addEventListener('keydown', (event) => {
     prevSong();
   }
 });
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'ArrowDown') {
+    volume--;
+  }
+});
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'ArrowUp') {
+    volume++;
+  }
+});
 
 // Automatyczne przejście do następnej piosenki po zakończeniu
 audio.addEventListener('ended', nextSong);
 
-// Aktualizacja głośności
-const rangeSlide = (value) => {
-  const volume = value / 100; // Konwersja zakresu 0-100 na 0-1
-  audio.volume = volume;
-  document.querySelector('.rangeValue').innerText = value + "%";
-};
+
