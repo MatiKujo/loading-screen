@@ -1,6 +1,8 @@
 const songs = [
-  { id: 1, url: "songs/nuta1.mp3" },
-  { id: 2, url: "songs/nuta2.mp3" }
+  { id: 1, title: "Jaja na twardo", author: "rów babicze", url: "songs/nuta1.mp3" },
+  { id: 2, title: "RysunKOwY PoTwóR", author: "chivas", url: "songs/nuta2.mp3" },
+  { id: 3, title: "Hej czy ty wiesz", author: "Dawid Jasper", url: "songs/nuta3.mp3" },
+  { id: 4, title: "Zwariowana noc", author: "Dawid Jasper", url: "songs/nuta4.mp3" }
 ];
 
 let currentSongIndex = 0;
@@ -20,11 +22,23 @@ const rangeSlide = (value) => {
 
 // Załaduj nowy utwór
 const loadSong = (index) => {
-  audio.src = songs[index].url;
-  audio.play();
-  isPlaying = true;
+  const songInfoContainer = document.querySelector('.song-info');
+  const song = songs[index];
+
+  const html = `
+    <div class="song-window">
+      <p>${song.title}</p>
+      <p>${song.author}</p>
+    </div>
+  `;
+
+  songInfoContainer.innerHTML = html;
+  audio.src = song.url;
+  isPlaying = false;
   updatePlayPauseIcon();
 };
+
+
 
 // Przejdź do następnego utworu
 const nextSong = () => {
@@ -93,3 +107,9 @@ document.addEventListener('keydown', (event) => {
 
 // Automatyczne przejście do następnej piosenki
 audio.addEventListener('ended', nextSong);
+
+window.onload = () => {
+  loadSong(currentSongIndex);
+  rangeSlide(currentVolume); // opcjonalnie, jeśli chcesz też od razu ustawić suwak głośności
+};
+
