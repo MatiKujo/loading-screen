@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loading screen</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="staff">
-        <p>Staff Team</p>
-        <div class="staff-guy">
-            <li>Hexus</li>
-            <span class="role">Owner</span>
-        </div>
-        <div class="staff-guy">
-          <li>Kalistenikarka</li>
-          <span class="role">Sigma</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading screen</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="staff">
+      <p>Staff Team</p>
+      <div class="staff-guy">
+        <li>Hexus</li>
+        <span class="role">Owner</span>
       </div>
-        
-        
+      <div class="staff-guy">
+        <li>Kalistenikarka</li>
+        <span class="role">Sigma</span>
       </div>
-      <div class="main">
-        <h1>
-          <span class="purple">SIG</span>MA<br />
-          ROLE<span>PLAY</span>
-        </h1>
-        <p>
-          FiveM Roleplay server featuring an extensive collection of custom
-          scripts, maps,<br> vehicles, unique weapons, and much more
-        </p>
-        <div class="nav">
-          <a href=""><i class="ri-discord-fill"></i></a>
-          <a href=""><i class="ri-instagram-fill"></i></a>
-          <a href=""><i class="ri-github-fill"></i></a>
-        </div>
+
+
+    </div>
+    <div class="main">
+      <h1>
+        <span class="purple">SIG</span>MA<br />
+        ROLE<span>PLAY</span>
+      </h1>
+      <p>
+        FiveM Roleplay server featuring an extensive collection of custom
+        scripts, maps,<br> vehicles, unique weapons, and much more
+      </p>
+      <div class="nav">
+        <a href=""><i class="ri-discord-fill"></i></a>
+        <a href=""><i class="ri-instagram-fill"></i></a>
+        <a href=""><i class="ri-github-fill"></i></a>
       </div>
-     
+    </div>
+
 
     <footer>
       <div class="music-bar">
-  <div class="skip-back" onclick="prevSong()"><i class="ri-skip-left-line"></i></div>
-  <div class="pause" onclick="toggleSongPause()"><i id="playPauseIcon" class="ri-play-line"></i></div>
-  <div class="skip" onclick="nextSong()"><i class="ri-skip-right-line"></i></div>
+        <div class="musiv-nav">
+          <div class="song-info"></div>
+          <div class="music-nav-buttons">
+            <div class="skip-back" onclick="prevSong()"><i class="ri-skip-left-line"></i></div>
+            <div class="pause" onclick="toggleSongPause()"><i id="playPauseIcon" class="ri-play-line"></i></div>
+            <div class="skip" onclick="nextSong()"><i class="ri-skip-right-line"></i></div>
+          </div>
+        </div>
 
-  <!-- Suwak głośności -->
-   <div class="song-info"></div>
-  <input class="range" type="range" value="100" min="0" max="100" 
-         oninput="rangeSlide(this.value)">
-  <span class="rangeValue">100%</span>
-</div>
+        <div class="range-bar">
+        <div class="rangeValue">100%</div>
+        <!-- Suwak głośności -->
+          <input class="range" type="range" value="100" min="0" max="100" oninput="rangeSlide(this.value)">
+        </div>
+      </div>
 
-      
+
       <div class="loading-bar">
         <br>
         <p class="progress">0%</p>
@@ -65,5 +69,6 @@
     <script src="script.js"></script>
     <script src="songs.js"></script>
     <script src="background.js"></script>
-  </body>
+</body>
+
 </html>
