@@ -10,7 +10,93 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: Arial;
 }
+
+body {
+  height: 100vh;
+  background-image: url("assets/gta.jpg"); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  color: var(--main-color); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background-image 1s ease-in-out; /* Dodajemy przejście */
+}
+
+.main-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+}
+
+
+
+.staff-team{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.staff-person{
+  display: flex;
+  justify-content: space-between;
+  width:300px;
+  padding:16px 8px;
+  background-color: var(--rgba-color);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.rank{
+  color: var(--alt-color);
+}
+
+
+.title-desc-nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.title{
+  font-weight: bold;
+  font-size: var(--huge-size);
+}
+
+.title span{
+  color: var(--alt-color);
+  text-shadow: 3px -3px 21px rgba(255, 16, 240, 1);
+}
+
+.nav{
+  margin-top:20px;
+}
+.nav a{
+  padding:16px;
+  color: var(--alt-color);
+  border:1px solid var(--alt-color);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 2rem;
+  background-color: transparent;
+  transition: background-color .15s,
+   color .15s;
+}
+
+
+.nav a:hover{
+background-color:var(--alt-color);
+color:var(--main-color);
+}
+
 
 
 
