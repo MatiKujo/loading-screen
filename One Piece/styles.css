@@ -103,7 +103,7 @@ justify-content: end;
 }
 
 
-.nav-box{
+.nav-box, .music-box{
   width:400px;
   height: 200px;
   background-color: var(--rgba-color);
