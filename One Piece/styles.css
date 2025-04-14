@@ -99,7 +99,8 @@ color:var(--main-color);
 
 .nav-main{
 display: flex;
-justify-content: end;
+flex-direction: column;
+row-gap: 20px;
 }
 
 
@@ -118,15 +119,3 @@ justify-content: end;
   justify-content: space-between;
   margin-top:12px;
 }
-
-
-.loading{
-
-}
-
-
-
-
-
-
-
