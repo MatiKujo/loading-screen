@@ -62,7 +62,18 @@ const updatePlayPauseIcon = () => {
 // Rozwijanie music-box
 const musicBox = document.querySelector('.music-box');
 
-musicBox.addEventListener('click', () => {
+musicBox.addEventListener('click', (event) => {
+  // Sprawdź, czy kliknięto wewnętrzne elementy sterujące
+  const isControl = event.target.closest('.music-controls') || event.target.closest('.range') || event.target.classList.contains('close-btn');
+  if (isControl) {
+    if (event.target.classList.contains('close-btn')) {
+      isPlayerOpen = false;
+      musicBox.classList.remove('expanded');
+      musicBox.innerHTML = `<i class="ri-spotify-line"></i><div class="song-info"></div>`;
+    }
+    return; // Nie zamykaj, jeśli kliknięto kontrolki lub przycisk "X"
+  }
+
   isPlayerOpen = !isPlayerOpen;
   musicBox.classList.toggle('expanded', isPlayerOpen);
 
@@ -75,9 +86,9 @@ musicBox.addEventListener('click', () => {
       <input type="range" class="range" min="0" max="100" value="${currentVolume}" onchange="rangeSlide(this.value)" />
       <span class="rangeValue">${currentVolume}%</span>
       <div class="music-controls">
-        <button onclick="prevSong()">⏮</button>
+        <button onclick="prevSong()"><i class="ri-skip-left-line"></i></button>
         <button onclick="toggleSongPause()"><i id="playPauseIcon" class="ri-play-line"></i></button>
-        <button onclick="nextSong()">⏭</button>
+        <button onclick="nextSong()"><i class="ri-skip-right-line"></i></button>
       </div>
     `;
     musicBox.innerHTML = html;
